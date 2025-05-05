@@ -11,8 +11,9 @@ configDotenv({ path: `${__dirname}/.env` });
 
 
 // Cloudinary config
-const CLOUDINARY_UPLOAD_PRESET = configDotenv().CLOUDINARY_UPLOAD_PRESET || "your_upload_preset"; // Replace with your Cloudinary upload preset
-const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || "your_cloud_name"; // Replace with your Cloudinary cloud name
+const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
 
 // Image preloader
 const loadImages = (el) => {
