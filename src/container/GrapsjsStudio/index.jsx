@@ -4,15 +4,11 @@ import "@grapesjs/studio-sdk/style";
 import grapesjsPresetNewsletter from "grapesjs-preset-newsletter";
 import html2pdf from "html2pdf.js";
 import html2canvas from "html2canvas";
-import { configDotenv } from "dotenv";
-configDotenv({ path: `${__dirname}/.env` });
-// import juice from "juice"; // Optional, only needed if you're inlining styles
 
-
-
-// Cloudinary config
+// Load from Vite environment
 const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+
 
 
 // Image preloader
