@@ -5,9 +5,9 @@ import grapesjsPresetNewsletter from "grapesjs-preset-newsletter";
 import html2pdf from "html2pdf.js";
 import html2canvas from "html2canvas";
 
-// Load from Vite environment
-const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_UPLOAD_PRESET = "test123";
+const CLOUDINARY_CLOUD_NAME = "dtszvtihe";
+
 
 // Image preloader
 const loadImages = (el) => {
