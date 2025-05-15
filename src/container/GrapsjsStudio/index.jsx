@@ -5,9 +5,9 @@ import grapesjsPresetNewsletter from "grapesjs-preset-newsletter";
 import html2pdf from "html2pdf.js";
 import html2canvas from "html2canvas";
 
+// Load from Vite environment
 const CLOUDINARY_UPLOAD_PRESET = "test123";
 const CLOUDINARY_CLOUD_NAME = "dtszvtihe";
-
 
 // Image preloader
 const loadImages = (el) => {
@@ -93,6 +93,27 @@ const GrapesJsStudioBuilder = () => {
   const [exportedCode, setExportedCode] = useState('');
 
   const editorRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024); // You can adjust width here
+    };
+
+    handleResize(); // Set initially
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (!isDesktop) {
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2>🖥️ Not Supported on Mobile</h2>
+        <p>Please use a desktop or larger screen to access the Email Builder.</p>
+      </div>
+    );
+  }
 
   // Export Image
   const exportImage = async () => {
@@ -446,7 +467,9 @@ const GrapesJsStudioBuilder = () => {
           },
           plugins: ["grapesjs-preset-newsletter"
           ],
-          storage: false,
+          storage: {
+      type: "cloud"
+    },
         }}
       />
     </div>
